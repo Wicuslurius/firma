@@ -33,7 +33,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
 
     // Crear la imagen de la card
     document.getElementById('download-btn').addEventListener('click', function () {
-    html2canvas(document.getElementById('card')).then(function (canvas) {
+    html2canvas(document.getElementById('card'){useCORS: true}).then(function (canvas) {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpg', 1.0);
         link.download = 'card.jpg';
