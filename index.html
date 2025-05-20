@@ -4,37 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Imagen</title>
-    <link rel="stylesheet" href="source/css/style.css">
+    <link rel="stylesheet" href="source/style/style.css">
 </head>
 <body>
 
     <!-- Formulario de entrada -->
     <div class="form-container">
-        <form id="form">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" required><br>
+        <form id="form" class='form'>
+          <div class='sub-container'>
+            <div class='column-L'>
+              <label for="nombre">Nombre completo:</label>
+              <input type="text" id="nombre" placeholder="Nombres y Apellidos"required><br>
 
-            <label for="mensaje">Mensaje:</label>
-            <input type="text" id="mensaje" required><br>
+              <label for="cargo">Cargo y área:</label>
+              <input type="text" id="cargo" placeholder='Desarrollador Full Stack | Departamento de Sistemas' required><br>
 
-            <label for="image">Icono:</label>
-            <input type="file" id="image" accept="image/*"></input><br>
+              <label for="correo">Correo:</label>
+              <input type="email" id="correo" placeholder='desarrollofullstack@correo.com' required><br>
 
-            <button type="submit">Generar Card</button>
+              <label for="url">Url empresa:</label>
+              <input type="text" id="url" placeholder='www.miweb.com' required><br>
+            </div>
+            <div class='column-R'>
+              <label for="telefono">Teléfono y ext:</label>
+              <input type="text" id="telefono" placeholder='57-1-6760000 ext. 123 - 345' required><br>
+
+              <label for="direccion">Dirección:</label>
+              <input type="text" id="direccion" placeholder='Calle 170 No. 15-68 | Bogotá | Colombia' required><br>
+
+              <label for="image">Icono:</label>
+              <input type="file" id="image" accept="image/*"></input><br>
+
+            </div>
+          </div>
+          <button type="submit">Generar Card</button>
         </form>
     </div>
 
     <!-- Card donde se mostrarán los datos -->
     <div class="card-container" id="card" style="display:none;">
         <img id='img' alt="Logo" class="logo"/>
+        <p>Cordialmente,</p>
         <h3 id="nombre-text"></h3>
-        <p id="mensaje-text"></p>
+        <p id="cargo-text"></p>
+        <p id='correo-text'></p>
+        <p id='url-text'></p>
+        <p id='telefono-text'></p>
+        <p id='direccion-text'></p>
     </div>
 
     <button id="download-btn" style="display:none;">Descargar Imagen</button>
 
     <!-- Script para generar la imagen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script type="text/javascript" src="source/javascript/script.js"></script>
+    <script type="text/javascript" src="source/javascript/image_download.js"></script>
 </body>
 </html>
+
