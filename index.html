@@ -13,47 +13,60 @@
         <form id="form" class='form'>
           <div class='sub-container'>
             <div class='column-L'>
-              <label for="nombre">Nombre completo:</label>
-              <input type="text" id="nombre" placeholder="Nombres y Apellidos"required><br>
-
-              <label for="cargo">Cargo y área:</label>
-              <input type="text" id="cargo" placeholder='Desarrollador Full Stack | Departamento de Sistemas' required><br>
-
-              <label for="correo">Correo:</label>
-              <input type="email" id="correo" placeholder='desarrollofullstack@correo.com' required><br>
-
-              <label for="url">Url empresa:</label>
-              <input type="text" id="url" placeholder='www.miweb.com' required><br>
+              <div class='box-general'>
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" placeholder="Nombres y Apellidos"required>
+              </div>
+              <div class='box-general'>
+                <label for="cargo">Cargo y área:</label>
+                <input type="text" id="cargo" placeholder='ej: Desarrollador | Sistemas' required>
+              </div>
+              <div class='box-general'>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" placeholder=' ej: desarrollofullstack@correo.com' required>
+              </div>
+              <div class='box-general' >
+                <label for="url">Url empresa:</label>
+                <input type="text" id="url" placeholder='ej: www.miweb.com' required><br>          </div>
             </div>
             <div class='column-R'>
-              <label for="telefono">Teléfono y ext:</label>
-              <input type="text" id="telefono" placeholder='57-1-6760000 ext. 123 - 345' required><br>
-
-              <label for="direccion">Dirección:</label>
-              <input type="text" id="direccion" placeholder='Calle 170 No. 15-68 | Bogotá | Colombia' required><br>
-
-              <label for="image">Icono:</label>
-              <input type="file" id="image" accept="image/*"></input><br>
-
+              <div class='box-general'>
+                <label for="telefono">Teléfono y ext:</label>
+                <input type="text" id="telefono" placeholder='ej: 57-1-6760000 ext. 123 - 345' required>
+              </div>
+              <div class='box-general'>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" placeholder='ej: Calle 170 No. 15-68 | Bogotá | Colombia' required>
+              </div>
+              <div class='box-general'>
+                <label for="image">Icono:</label>
+                <input type="file" id="image" accept="image/*"></input>
+              </div>
             </div>
           </div>
-          <button type="submit">Generar Card</button>
+          <button type="submit">Generar Firma</button>
         </form>
     </div>
 
     <!-- Card donde se mostrarán los datos -->
     <div class="card-container" id="card" style="display:none;">
-        <img id='img' alt="Logo" class="logo"/>
-        <p>Cordialmente,</p>
-        <h3 id="nombre-text"></h3>
-        <p id="cargo-text"></p>
-        <p id='correo-text'></p>
-        <p id='url-text'></p>
-        <p id='telefono-text'></p>
-        <p id='direccion-text'></p>
+      <div class="card-sub-container">
+      	<div class='card-column-L'>
+       	 <img id='img' alt="Logo" class="logo"/>
+      	</div>
+     	<div class='card-column-R'>
+       	 <p style='font-weight: 400; font-size: 18px;'>Cordialmente,</p>
+       	 <p id="nombre-text"></p>
+       	 <p id="cargo-text" style='font-size: 12px;'></p>
+       	 <p id='correo-text' style='font-size: 13px; text-decoration: underline; color: blue;'></p>
+       	 <p id='telefono-text'></p>
+       	 <p id='url-text' style='font-size: 13px; text-decoration: underline; color: blue;'></p>
+       	 <p id='direccion-text' style='font-size: 12px;'></p>  
+        </div>
+      </div>
     </div>
 
-    <button id="download-btn" style="display:none;">Descargar Imagen</button>
+    <button id="download-btn" style="display:none;">Descargar</button>
 
     <!-- Script para generar la imagen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
