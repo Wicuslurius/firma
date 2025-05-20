@@ -22,10 +22,18 @@ document.getElementById('form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     const nombre = document.getElementById('nombre').value;
-    const mensaje = document.getElementById('mensaje').value;
+    const cargo = document.getElementById('cargo').value;
+    const correo = document.getElementById('correo').value;
+    const url = document.getElementById('url').value;
+    const telefono = document.getElementById('telefono').value;
+    const direccion = document.getElementById('direccion').value;
 
     document.getElementById('nombre-text').textContent = nombre;
-    document.getElementById('mensaje-text').textContent = mensaje;
+    document.getElementById('cargo-text').textContent = cargo;
+    document.getElementById('correo-text').textContent = correo;
+    document.getElementById('url-text').textContent = url;
+    document.getElementById('telefono-text').textContent = telefono;
+    document.getElementById('direccion-text').textContent = direccion;
 
     document.getElementById('card').style.display = 'block';
     document.getElementById('download-btn').style.display = 'inline-block';
