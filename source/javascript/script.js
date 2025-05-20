@@ -1,31 +1,43 @@
-const form = document.getElementById('formulario');
-const card = document.getElementById('card');
-const descargar = document.getElementById('descargar');
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  // Coloca los textos en la card
-  document.getElementById('t1').textContent = document.getElementById('texto1').value;
-  document.getElementById('t2').textContent = document.getElementById('texto2').value;
-  document.getElementById('t3').textContent = document.getElementById('texto3').value;
-  document.getElementById('t4').textContent = document.getElementById('texto4').value;
-  // Espera a que el logo se cargue
-  const logo = document.getElementById("logo");
-  if (!logo.complete) {
-    await new Promise((resolve) => { logo.onload = resolve });
-  }
-  // Genera la imagen
-  html2canvas(card, {
-    width: 800,
-    height: 300,
-    useCORS: true,
-    backgroundColor: null
-  }).then(canvas => {
-  // Muestra el canvas generado (opcional)
-  document.getElementById('preview').innerHTML = '';
-  document.getElementById('preview').appendChild(canvas);
-  // Crea el enlace de descarga
-  descargar.href = canvas.toDataURL("image/png");
-  descargar.style.display = 'inline-block';
+    // Obtener los valores del formulario
+    const nombre = document.getElementById('nombre').value;
+    const mensaje = document.getElementById('mensaje').value;
+    const img_input = document.getElementById('image');
+
+    // Asignar los valores a la card
+    const img = document.getElementById('img');
+    img_input.addEventListener('change', function () {
+      const file = img_input.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          img.src = e.target.result; // Asigna la URL base64 al src del <img>
+          img.style.display = 'block'; // Muestra la imagen
+        };
+
+        reader.readAsDataURL(file); // Convierte el archivo en una URL base64
+      }
+    });
+    document.getElementById('nombre-text').textContent = nombre;
+    document.getElementById('mensaje-text').textContent = mensaje;
+
+    // Mostrar la card
+    document.getElementById('card').style.display = 'block';
+
+    // Mostrar el botón para descargar la imagen
+    document.getElementById('download-btn').style.display = 'inline-block';
+
+    // Crear la imagen de la card
+    document.getElementById('download-btn').addEventListener('click', function () {
+    html2canvas(document.getElementById('card')).then(function (canvas) {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/jpg', 1.0);
+        link.download = 'card.jpg';
+        link.click();
+    });
   });
 });
