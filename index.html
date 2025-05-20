@@ -1,46 +1,40 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Generador de Card</title>
-  <link rel="stylesheet" href="./source/css/style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Imagen</title>
+    <link rel="stylesheet" href="source/style/style.css">
 </head>
 <body>
 
-  <h1>Formulario para generar tu firma</h1>
+    <!-- Formulario de entrada -->
+    <div class="form-container">
+        <form id="form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required><br>
 
-  <form id="formulario">
-    <label for="texto1">Texto 1:</label>
-    <input type="text" id="texto1" required>
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" id="mensaje" required><br>
 
-    <label for="texto2">Texto 2:</label>
-    <input type="text" id="texto2" required>
+            <label for="image">Icono:</label>
+            <input type="file" id="image" accept="image/*"></input><br>
 
-    <label for="texto3">Texto 3:</label>
-    <input type="text" id="texto3" required>
-
-    <label for="texto4">Texto 4:</label>
-    <input type="text" id="texto4" required>
-
-    <br><br>
-    <button type="submit">Generar Imagen</button>
-  </form>
-
-  <!-- Card -->
-  <div id="card">
-    <img src="./source/img/logo.png" class="logo" id="logo" alt="Logo" />
-    <div class="text-container">
-      <p id="t1">Texto 1</p>
-      <p id="t2">Texto 2</p>
-      <p id="t3">Texto 3</p>
-      <p id="t4">Texto 4</p>
+            <button type="submit">Generar Card</button>
+        </form>
     </div>
-  </div>
 
-  <div id="preview"></div>
-  <a id="descargar" href="#" download="imagen-card.png">Descargar Imagen</a>
+    <!-- Card donde se mostrarán los datos -->
+    <div class="card-container" id="card" style="display:none;">
+        <img id='img' alt="Logo" class="logo"/>
+        <h3 id="nombre-text"></h3>
+        <p id="mensaje-text"></p>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script type="text/javascript" src="./source/javascript/script.js"></script>
+    <button id="download-btn" style="display:none;">Descargar Imagen</button>
+
+    <!-- Script para generar la imagen -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="source/javascript/image_download.js"></script>
 </body>
 </html>
