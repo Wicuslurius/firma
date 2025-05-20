@@ -1,0 +1,142 @@
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 300px;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    #card {
+      width: 800px;
+      height: 300px;
+      border: 2px solid #ccc;
+      position: relative;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100px;
+    }
+
+    .text-container {
+      width: 100%;
+      text-align: center;
+    }
+
+    .text-container p {
+      margin: 5px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #preview {
+      margin-top: 20px;
+    }
+
+    #descargar {
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Formulario para generar imagen</h1>
+
+  <form id="formulario">
+    <label for="texto1">Texto 1:</label>
+    <input type="text" id="texto1" required>
+
+    <label for="texto2">Texto 2:</label>
+    <input type="text" id="texto2" required>
+
+    <label for="texto3">Texto 3:</label>
+    <input type="text" id="texto3" required>
+
+    <label for="texto4">Texto 4:</label>
+    <input type="text" id="texto4" required>
+
+    <br><br>
+    <button type="submit">Generar Imagen</button>
+  </form>
+
+  <!-- Card -->
+  <div id="card">
+    <img src="./source/img/logo.png" class="logo" id="logo" alt="Logo" />
+    <div class="text-container">
+      <p id="t1">Texto 1</p>
+      <p id="t2">Texto 2</p>
+      <p id="t3">Texto 3</p>
+      <p id="t4">Texto 4</p>
+    </div>
+  </div>
+
+  <div id="preview"></div>
+  <a id="descargar" href="#" download="imagen-card.png">Descargar Imagen</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    const form = document.getElementById('formulario');
+    const card = document.getElementById('card');
+    const descargar = document.getElementById('descargar');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Coloca los textos en la card
+      document.getElementById('t1').textContent = document.getElementById('texto1').value;
+      document.getElementById('t2').textContent = document.getElementById('texto2').value;
+      document.getElementById('t3').textContent = document.getElementById('texto3').value;
+      document.getElementById('t4').textContent = document.getElementById('texto4').value;
+
+      // Espera a que el logo se cargue
+      const logo = document.getElementById("logo");
+      if (!logo.complete) {
+        await new Promise((resolve) => { logo.onload = resolve });
+      }
+
+      // Genera la imagen
+      html2canvas(card, {
+        width: 800,
+        height: 300,
+        useCORS: true,
+        backgroundColor: null
+      }).then(canvas => {
+        // Muestra el canvas generado (opcional)
+        document.getElementById('preview').innerHTML = '';
+        document.getElementById('preview').appendChild(canvas);
+
+        // Crea el enlace de descarga
+        descargar.href = canvas.toDataURL("image/png");
+        descargar.style.display = 'inline-block';
+      });
+    });
+  </script>
+</body>
+</html>
