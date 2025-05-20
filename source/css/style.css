@@ -5,7 +5,37 @@ body {
 }
 
 .form-container {
-    margin-bottom: 20px;
+    padding: 20px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container form{
+  max-width: 60%;
+  background-color: blue;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-container{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.column-L{
+  max-width: 46%;
+  padding: 10px;
+  background-color: white;
+}
+
+.column-R{
+  max-width: 46%;
+  padding: 10px;
+  background-color: white;
 }
 
 .card-container {
@@ -14,7 +44,7 @@ body {
     width: 300px;
     margin: 0 auto;
     text-align: center;
-backgroud-color: blue;
+    backgroud-color: blue;
     display: none; /* Oculto hasta que se genere la card */
 }
 
